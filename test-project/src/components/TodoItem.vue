@@ -3,7 +3,7 @@
         <span v-bind:class="{done: todo.completed}">
             <input type="checkbox" v-on:change="todo.completed=!todo.completed">
             <strong>{{ index + 1 }}</strong>
-            {{ todo.title }}
+            {{ todo.title | uppercase}}
         </span>
         <button 
             class="rm" 
@@ -19,6 +19,11 @@ export default {
             required: true
         },
         index: Number
+    },
+    filters: {
+        uppercase(value) {
+            return value.toUpperCase();
+        }
     }
 }
 </script>
@@ -37,6 +42,8 @@ export default {
         color: #fff;
         border-radius: 5px;
         font-weight: bold;
+        width: 23.8px;
+        height: 21px;
     }
 
     input{
